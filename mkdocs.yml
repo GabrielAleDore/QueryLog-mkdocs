@@ -1,0 +1,128 @@
+site_name: QueryLog
+site_url: https://querylog.org
+
+# Configuração do repositorio
+repo_url: https://github.com/GabrielAleDore/QueryLog-mkdocs
+repo_name: QueryLog-mkdocs
+edit_uri: edit/main/docs
+
+theme:
+  name: material
+
+  icon:
+
+    # Icones da confguração do repositorio
+    repo: fontawesome/brands/gitlab
+    edit: material/pencil
+    view: material/eye
+
+  font:
+    text: Roboto
+    code: JetBrains Mono
+
+  features:
+    - navigation.instant          # Carregamento instantâneo
+    - navigation.instant.prefetch # Pré-busca instantânea
+    - navigation.instant.progress # Indicador de progresso
+    - navigation.instant.preview  # Pré-visualizações globais
+    - navigation.tracking         # Ancorá para navegação
+    - navigation.tabs             # Guias de navegação
+    - navigation.tabs.sticky      # Abras de navegação fixas
+    - navigation.sections         # Seções de navegação
+    - navigation.expand           # expansão de navegação
+    - navigation.path             # Caminho das pastas 
+    - navigation.indexes          # Páginas de indice
+#    - toc.integrate               # Navegação integrada
+    - navigation.top              # Voltar ao topo
+    - search.suggest              # Sugestões de pesquisa
+    - search.highlight            # Destaca as pesquisas
+    - search.share                # Compatilhar pesquisas
+    - header.autohide             # Oculta o cabeçalho automaticamente
+    - navigation.footer           # Botão proximo e anterior
+    - content.action.edit         # Permite editar os arquivos
+
+  palette: 
+  # Automatic mode
+  - media: "(prefers-color-scheme)"
+    toggle:
+      icon: material/brightness-auto
+      name: Switch to light mode
+
+  # Light mode
+  - media: "(prefers-color-scheme: light)"
+    scheme: default 
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+
+  # Dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    toggle:
+      icon: material/brightness-4
+      name: Switch to system preference
+
+# Configuração de privacidade
+extra:
+  consent:
+    title: Cookie consent
+    description: 
+      Usamos cookies para reconhecer suas visitas repetidas e preferências, bem como para medir a eficácia de nossa documentação e se os usuários encontram o que procuram. Com seu consentimento, você nos ajuda a melhorar nossa documentação.
+    cookies:
+      analytics: Nome personalizado
+      custom: Custom cookie
+    actions:
+      - accept
+      - manage
+      - reject
+
+   # Pré-visualizações instantâneas para lista de atributos   
+  
+
+# Extenções
+markdown_extensions:
+  - attr_list   # Lista de atributos
+  - admonition  # Admoestação
+  - abbr        # Abreviações
+  - def_list    # Listas de definições
+  - footnotes   # Notas de rodapé
+  - md_in_html  # Permite personalizar com HTML
+  - tables      # Permite criar tabelas
+
+  # Pré-visualizações automáticas
+  - material.extensions.preview:
+      configurations:
+       - targets:
+          include:
+            - index.md
+
+# Plugins
+plugins:
+  - search
+
+  # Adicionar data nos documentos
+  - git-revision-date-localized:
+      enable_creation_date: true
+      enabled: true
+      type: date
+
+  - git-committers:
+      repository: GabrielAleDore/QueryLog-mkdocs
+      branch: main
+      enabled: true
+  
+  - git-authors
+
+# Estrutura de navegação 
+nav:
+  - Home: index.md
+
+  # Arquitetura arquivos de script
+  - Scripts: scripts/index-scripts.md
+
+  # Arquitetura arquivos de relatórios
+  - Relatórios: relatorios/index-relatorios.md
+  
+  # Arquitetura arquivos de Banco de dados
+  - Banco de Dados: banco-de-dados/index-banco-de-dados.md
+
