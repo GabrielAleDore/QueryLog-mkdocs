@@ -1,40 +1,26 @@
-name: Deploy MkDocs to GitHub Pages
-
+name: Deploy MkDocs
 on:
   push:
     branches:
       - main
-  # Permite rodar manualmente pela aba "Actions" no GitHub
-  workflow_dispatch:
-
 permissions:
-  contents: write  # Necessário para o gh-deploy escrever na gh-pages
-
+  contents: write
 jobs:
   deploy:
-    name: Build & Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 0   # Histórico completo para git-revision-date e git-committers
-
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Install dependencies
-        run: |
-          pip install \
-            mkdocs-material \
-            mkdocs-git-revision-date-localized-plugin \
-            mkdocs-git-committers-plugin-2
-
-      - name: Build & Deploy
-        env:
-          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
-        run: mkdocs gh-deploy --force --clean
+          python-version: 3.x
+      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+      - uses: actions/cache@v4
+        with:
+          key: mkdocs-material-${{ env.cache_id }}
+          path: .cache
+          restore-keys: |
+            mkdocs-material-
+      - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin mkdocs-git-committers-plugin-2
+      - run: mkdocs gh-deploy --force
