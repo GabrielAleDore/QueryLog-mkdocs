@@ -1,0 +1,40 @@
+name: Deploy MkDocs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  # Permite rodar manualmente pela aba "Actions" no GitHub
+  workflow_dispatch:
+
+permissions:
+  contents: write  # Necessário para o gh-deploy escrever na gh-pages
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # Histórico completo para git-revision-date e git-committers
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install \
+            mkdocs-material \
+            mkdocs-git-revision-date-localized-plugin \
+            mkdocs-git-committers-plugin-2
+
+      - name: Build & Deploy
+        env:
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.MKDOCS_GIT_COMMITTERS_APIKEY }}
+        run: mkdocs gh-deploy --force --clean

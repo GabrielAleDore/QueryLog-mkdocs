@@ -8,31 +8,29 @@
       
       
       
-        <link rel="canonical" href="https://querylog.org/relatorios/index-relatorios/">
+        <link rel="canonical" href="http://127.0.0.1:8001/">
       
       
-        <link rel="prev" href="../../scripts/boas-praticas-sql/">
       
-      
-        <link rel="next" href="../../banco-de-dados/index-banco-de-dados/">
+        <link rel="next" href="scripts/index-scripts/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.2">
     
     
       
-        <title>Index relatorios - QueryLog</title>
+        <title>QueryLog — Documentação Técnica Interna - QueryLog</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,9 +49,9 @@
       
     
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -89,7 +87,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="QueryLog" class="md-header__button md-logo" aria-label="QueryLog" data-md-component="logo">
+    <a href="." title="QueryLog" class="md-header__button md-logo" aria-label="QueryLog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -109,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Index relatorios
+              QueryLog — Documentação Técnica Interna
             
           </span>
         </div>
@@ -229,9 +227,11 @@
   
   
   
+    
   
-    <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="." class="md-tabs__link">
         
   
   
@@ -252,7 +252,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../scripts/index-scripts/" class="md-tabs__link">
+        <a href="scripts/index-scripts/" class="md-tabs__link">
           
   
   
@@ -270,13 +270,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="relatorios/index-relatorios/" class="md-tabs__link">
           
   
   
@@ -298,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../banco-de-dados/index-banco-de-dados/" class="md-tabs__link">
+        <a href="banco-de-dados/index-banco-de-dados/" class="md-tabs__link">
           
   
   
@@ -322,8 +320,526 @@
     <div class="md-container" data-md-component="container">
       
       
+
         
       
+
+<style>
+  /* ── Reset da home ── */
+  .md-main { display: none; }
+
+  /* ── Hero ── */
+  .ql-hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem 6rem;
+    background: var(--ql-bg-gradient);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ── Grade de fundo ── */
+  .ql-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--ql-grid-color) 1px, transparent 1px),
+      linear-gradient(90deg, var(--ql-grid-color) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+    pointer-events: none;
+  }
+
+  /* ── Modo claro ── */
+  [data-md-color-scheme="default"] {
+    --ql-bg-gradient: linear-gradient(160deg, #f0f4ff 0%, #e8f0fe 40%, #faf0ff 100%);
+    --ql-grid-color: rgba(66, 133, 244, 0.08);
+    --ql-title-color: #1a237e;
+    --ql-sub-color: #424242;
+    --ql-badge-bg: rgba(66,133,244,0.1);
+    --ql-badge-color: #1565c0;
+    --ql-card-bg: rgba(255,255,255,0.75);
+    --ql-card-border: rgba(66,133,244,0.15);
+    --ql-card-shadow: 0 8px 32px rgba(66,133,244,0.12);
+    --ql-code-bg: #0d1117;
+    --ql-code-header: #161b22;
+    --ql-btn-primary-from: #1a73e8;
+    --ql-btn-primary-to: #6a35f5;
+    --ql-btn-outline-color: #1a73e8;
+    --ql-btn-outline-border: #1a73e8;
+    --ql-divider: rgba(66,133,244,0.15);
+    --ql-stat-color: #1a237e;
+    --ql-stat-sub: #616161;
+  }
+
+  /* ── Modo escuro ── */
+  [data-md-color-scheme="slate"] {
+    --ql-bg-gradient: linear-gradient(160deg, #0a0e1a 0%, #0d1b2a 50%, #120a1e 100%);
+    --ql-grid-color: rgba(100, 181, 246, 0.05);
+    --ql-title-color: #e3f2fd;
+    --ql-sub-color: #b0bec5;
+    --ql-badge-bg: rgba(100,181,246,0.12);
+    --ql-badge-color: #64b5f6;
+    --ql-card-bg: rgba(255,255,255,0.04);
+    --ql-card-border: rgba(100,181,246,0.12);
+    --ql-card-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    --ql-code-bg: #0d1117;
+    --ql-code-header: #161b22;
+    --ql-btn-primary-from: #1a73e8;
+    --ql-btn-primary-to: #6a35f5;
+    --ql-btn-outline-color: #64b5f6;
+    --ql-btn-outline-border: #64b5f6;
+    --ql-divider: rgba(100,181,246,0.12);
+    --ql-stat-color: #e3f2fd;
+    --ql-stat-sub: #78909c;
+  }
+
+  /* ── Badge ── */
+  .ql-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: var(--ql-badge-bg);
+    color: var(--ql-badge-color);
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .35rem .9rem;
+    border-radius: 99px;
+    border: 1px solid var(--ql-card-border);
+    margin-bottom: 1.6rem;
+  }
+  .ql-badge svg { width: 14px; height: 14px; fill: currentColor; }
+
+  /* ── Título ── */
+  .ql-title {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: var(--ql-title-color);
+    text-align: center;
+    line-height: 1.15;
+    letter-spacing: -.02em;
+    margin: 0 0 1.2rem;
+    max-width: 780px;
+  }
+  .ql-title-accent {
+    background: linear-gradient(135deg, var(--ql-btn-primary-from), var(--ql-btn-primary-to));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Subtítulo ── */
+  .ql-sub {
+    color: var(--ql-sub-color);
+    font-size: 1.1rem;
+    text-align: center;
+    max-width: 540px;
+    line-height: 1.7;
+    margin: 0 0 2.8rem;
+  }
+
+  /* ── Botões ── */
+  .ql-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+  }
+  .ql-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .78rem 1.8rem;
+    border-radius: 10px;
+    font-size: .95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s, opacity .2s;
+    cursor: pointer;
+  }
+  .ql-btn:hover { transform: translateY(-2px); opacity: .9; }
+  .ql-btn--primary {
+    background: linear-gradient(135deg, var(--ql-btn-primary-from), var(--ql-btn-primary-to));
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(26,115,232,.35);
+  }
+  .ql-btn--outline {
+    background: transparent;
+    color: var(--ql-btn-outline-color);
+    border: 2px solid var(--ql-btn-outline-border);
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+  .ql-btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+  /* ── Área de animação ── */
+  .ql-code-stage {
+    width: 100%;
+    max-width: 860px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+  @media (max-width: 640px) { .ql-code-stage { grid-template-columns: 1fr; } }
+
+  .ql-code-card {
+    background: var(--ql-code-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+  }
+  .ql-code-header {
+    background: var(--ql-code-header);
+    padding: .6rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .ql-dots { display: flex; gap: 5px; }
+  .ql-dot {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+  }
+  .ql-dot--red   { background: #ff5f57; }
+  .ql-dot--yel   { background: #ffbd2e; }
+  .ql-dot--grn   { background: #28c840; }
+  .ql-code-label {
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: #8b949e;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+  .ql-code-body {
+    padding: 1.2rem 1.4rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .8rem;
+    line-height: 1.9;
+    color: #c9d1d9;
+    min-height: 180px;
+    white-space: pre;
+  }
+
+  /* Syntax colors */
+  .kw  { color: #ff79c6; }  /* keywords */
+  .fn  { color: #50fa7b; }  /* functions / commands */
+  .st  { color: #f1fa8c; }  /* strings / identifiers */
+  .cm  { color: #6272a4; font-style: italic; }  /* comments */
+  .nm  { color: #bd93f9; }  /* numbers / operators */
+  .tb  { color: #8be9fd; }  /* table names */
+
+  /* Cursor piscante */
+  .ql-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    background: #f8f8f2;
+    vertical-align: text-bottom;
+    animation: blink .85s step-end infinite;
+    margin-left: 1px;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* ── Cards de features (abaixo da hero) ── */
+  .ql-features {
+    width: 100%;
+    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+  @media (max-width: 640px) { .ql-features { grid-template-columns: 1fr; } }
+
+  .ql-feat-card {
+    background: var(--ql-card-bg);
+    border: 1px solid var(--ql-card-border);
+    border-radius: 14px;
+    padding: 1.4rem 1.2rem;
+    backdrop-filter: blur(12px);
+    box-shadow: var(--ql-card-shadow);
+    text-align: center;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .ql-feat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,.2); }
+  .ql-feat-icon { font-size: 2rem; margin-bottom: .6rem; }
+  .ql-feat-title { font-size: .95rem; font-weight: 700; color: var(--ql-title-color); margin-bottom: .35rem; }
+  .ql-feat-desc  { font-size: .82rem; color: var(--ql-sub-color); line-height: 1.6; }
+</style>
+
+<section class="ql-hero">
+  <div class="ql-grid-bg"></div>
+
+  <!-- Badge -->
+  <span class="ql-badge">
+    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 14.93V17a1 1 0 0 1-2 0v-.07A8 8 0 0 1 4 9a8 8 0 0 1 16 0 8 8 0 0 1-7 4.93z"/></svg>
+    Documentação Técnica Interna
+  </span>
+
+  <!-- Título -->
+  <h1 class="ql-title">
+    Bem-vindo ao <span class="ql-title-accent">QueryLog</span>
+  </h1>
+
+  <!-- Subtítulo -->
+  <p class="ql-sub">
+    Central de documentação dos times de Scripts, Relatórios e Banco de Dados.
+    Tudo que você precisa, indexado e pesquisável.
+  </p>
+
+  <!-- Botões -->
+  <div class="ql-actions">
+    <a href="scripts/index-scripts/" class="ql-btn ql-btn--primary">
+      <svg viewBox="0 0 24 24"><path d="M8 3a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2H3v2h1a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h2v-2H8v-5a2 2 0 0 0-2-2 2 2 0 0 0 2-2V5h2V3H8zm8 0a2 2 0 0 1 2 2v4a2 2 0 0 0 2 2h1v2h-1a2 2 0 0 0-2 2v4a2 2 0 0 1-2 2h-2v-2h2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5h-2V3h2z"/></svg>
+      Scripts SQL
+    </a>
+    <a href="relatorios/index-relatorios/" class="ql-btn ql-btn--outline">
+      <svg viewBox="0 0 24 24"><path d="M9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4zm2.5 2.1h-15V5h15v14.1zm0-16.1h-15C3.12 3 2 4.12 2 5.5v13C2 19.88 3.12 21 4.5 21h15c1.38 0 2.5-1.12 2.5-2.5v-13C22 4.12 20.88 3 19.5 3z"/></svg>
+      Relatórios
+    </a>
+    <a href="banco-de-dados/index-banco-de-dados/" class="ql-btn ql-btn--outline">
+      <svg viewBox="0 0 24 24"><path d="M12 3C7.58 3 4 4.79 4 7v10c0 2.21 3.58 4 8 4s8-1.79 8-4V7c0-2.21-3.58-4-8-4zm0 2c3.87 0 6 1.5 6 2s-2.13 2-6 2-6-1.5-6-2 2.13-2 6-2zm0 16c-3.87 0-6-1.5-6-2v-1.27C7.34 18.36 9.61 19 12 19s4.66-.64 6-1.27V19c0 .5-2.13 2-6 2zm0-4c-3.87 0-6-1.5-6-2v-1.27C7.34 14.36 9.61 15 12 15s4.66-.64 6-1.27V15c0 .5-2.13 2-6 2zm0-4c-3.87 0-6-1.5-6-2V9.73C7.34 10.36 9.61 11 12 11s4.66-.64 6-1.27V11c0 .5-2.13 2-6 2z"/></svg>
+      Banco de Dados
+    </a>
+  </div>
+
+  <!-- Animação de código -->
+  <div class="ql-code-stage">
+
+    <!-- Card SQL -->
+    <div class="ql-code-card" id="ql-sql-card">
+      <div class="ql-code-header">
+        <div class="ql-dots">
+          <span class="ql-dot ql-dot--red"></span>
+          <span class="ql-dot ql-dot--yel"></span>
+          <span class="ql-dot ql-dot--grn"></span>
+        </div>
+        <span class="ql-code-label">SQL</span>
+      </div>
+      <div class="ql-code-body" id="ql-sql-output"><span class="ql-cursor"></span></div>
+    </div>
+
+    <!-- Card IBM DB2 -->
+    <div class="ql-code-card" id="ql-db2-card">
+      <div class="ql-code-header">
+        <div class="ql-dots">
+          <span class="ql-dot ql-dot--red"></span>
+          <span class="ql-dot ql-dot--yel"></span>
+          <span class="ql-dot ql-dot--grn"></span>
+        </div>
+        <span class="ql-code-label">IBM DB2</span>
+      </div>
+      <div class="ql-code-body" id="ql-db2-output"><span class="ql-cursor"></span></div>
+    </div>
+
+  </div>
+
+  <!-- Feature cards -->
+  <div class="ql-features">
+    <div class="ql-feat-card">
+      <div class="ql-feat-icon">🔍</div>
+      <div class="ql-feat-title">Busca Inteligente</div>
+      <div class="ql-feat-desc">Pesquise qualquer script, relatório ou schema em segundos.</div>
+    </div>
+    <div class="ql-feat-card">
+      <div class="ql-feat-icon">📋</div>
+      <div class="ql-feat-title">Versionamento</div>
+      <div class="ql-feat-desc">Histórico completo de quem editou e quando cada documento foi atualizado.</div>
+    </div>
+    <div class="ql-feat-card">
+      <div class="ql-feat-icon">🏷️</div>
+      <div class="ql-feat-title">Tags & Categorias</div>
+      <div class="ql-feat-desc">Documentos organizados por área, tecnologia e tipo de conteúdo.</div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+(function () {
+  /* ── Snippets para animar ── */
+  const sqlSnippets = [
+    [
+      { t: "kw",  v: "SELECT" }, { t: "", v: "\n  " },
+      { t: "tb",  v: "c" }, { t: "", v: ".NOME, " },
+      { t: "tb",  v: "c" }, { t: "", v: ".CPF,\n  " },
+      { t: "fn",  v: "COUNT" }, { t: "", v: "(" },
+      { t: "tb",  v: "p" }, { t: "", v: ".ID) " },
+      { t: "kw",  v: "AS" }, { t: "", v: " TOTAL_PEDIDOS\n" },
+      { t: "kw",  v: "FROM" }, { t: "", v: "\n  " },
+      { t: "tb",  v: "CLIENTES" }, { t: "", v: " " },
+      { t: "tb",  v: "c" }, { t: "", v: "\n" },
+      { t: "kw",  v: "INNER JOIN" }, { t: "", v: "\n  " },
+      { t: "tb",  v: "PEDIDOS" }, { t: "", v: " " },
+      { t: "tb",  v: "p" }, { t: "", v: " " },
+      { t: "kw",  v: "ON" }, { t: "", v: " " },
+      { t: "tb",  v: "c" }, { t: "", v: ".ID = " },
+      { t: "tb",  v: "p" }, { t: "", v: ".CLIENTE_ID\n" },
+      { t: "kw",  v: "WHERE" }, { t: "", v: "\n  " },
+      { t: "tb",  v: "c" }, { t: "", v: ".ATIVO = " },
+      { t: "nm",  v: "1" }, { t: "", v: "\n" },
+      { t: "kw",  v: "GROUP BY" }, { t: "", v: "\n  " },
+      { t: "tb",  v: "c" }, { t: "", v: ".NOME, " },
+      { t: "tb",  v: "c" }, { t: "", v: ".CPF\n" },
+      { t: "kw",  v: "ORDER BY" }, { t: "", v: " TOTAL_PEDIDOS " },
+      { t: "kw",  v: "DESC" },
+    ],
+    [
+      { t: "cm",  v: "-- Criação de índice para performance" }, { t: "", v: "\n" },
+      { t: "kw",  v: "CREATE INDEX" }, { t: "", v: "\n  " },
+      { t: "fn",  v: "IDX_PEDIDOS_DATA" }, { t: "", v: "\n" },
+      { t: "kw",  v: "ON" }, { t: "", v: " " },
+      { t: "tb",  v: "PEDIDOS" },
+      { t: "", v: " (" }, { t: "st",  v: "DT_PEDIDO" }, { t: "", v: " " },
+      { t: "kw",  v: "DESC" }, { t: "", v: ");\n\n" },
+      { t: "cm",  v: "-- Consulta otimizada" }, { t: "", v: "\n" },
+      { t: "kw",  v: "SELECT" }, { t: "", v: " " },
+      { t: "tb",  v: "p" }, { t: "", v: ".*\n" },
+      { t: "kw",  v: "FROM" }, { t: "", v: " " },
+      { t: "tb",  v: "PEDIDOS" }, { t: "", v: " " },
+      { t: "tb",  v: "p" }, { t: "", v: "\n" },
+      { t: "kw",  v: "WHERE" }, { t: "", v: " " },
+      { t: "tb",  v: "p" }, { t: "", v: ".DT_PEDIDO\n  " },
+      { t: "kw",  v: "BETWEEN" }, { t: "", v: " " },
+      { t: "st",  v: "'2024-01-01'" }, { t: "", v: "\n  " },
+      { t: "kw",  v: "AND" }, { t: "", v: " " },
+      { t: "st",  v: "'2024-12-31'" },
+    ],
+  ];
+
+  const db2Snippets = [
+    [
+      { t: "cm",  v: "-- IBM DB2: Listar tabelas do schema" }, { t: "", v: "\n" },
+      { t: "kw",  v: "SELECT" }, { t: "", v: "\n  " },
+      { t: "st",  v: "TABSCHEMA" }, { t: "", v: ", " },
+      { t: "st",  v: "TABNAME" }, { t: "", v: ",\n  " },
+      { t: "st",  v: "CARD" }, { t: "", v: " " },
+      { t: "kw",  v: "AS" }, { t: "", v: " " },
+      { t: "fn",  v: "QTD_LINHAS" }, { t: "", v: "\n" },
+      { t: "kw",  v: "FROM" }, { t: "", v: " " },
+      { t: "tb",  v: "SYSCAT.TABLES" }, { t: "", v: "\n" },
+      { t: "kw",  v: "WHERE" }, { t: "", v: "\n  " },
+      { t: "st",  v: "TABSCHEMA" }, { t: "", v: " = " },
+      { t: "st",  v: "'PRODUCAO'" }, { t: "", v: "\n  " },
+      { t: "kw",  v: "AND" }, { t: "", v: " " },
+      { t: "st",  v: "TYPE" }, { t: "", v: " = " },
+      { t: "st",  v: "'T'" }, { t: "", v: "\n" },
+      { t: "kw",  v: "ORDER BY" }, { t: "", v: " " },
+      { t: "fn",  v: "QTD_LINHAS" }, { t: "", v: " " },
+      { t: "kw",  v: "DESC" },
+    ],
+    [
+      { t: "cm",  v: "-- RUNSTATS para atualizar estatísticas" }, { t: "", v: "\n" },
+      { t: "fn",  v: "CALL" }, { t: "", v: "\n  " },
+      { t: "tb",  v: "SYSPROC.ADMIN_CMD" }, { t: "", v: "(\n  " },
+      { t: "st",  v: "'RUNSTATS ON TABLE'" }, { t: "", v: "\n  || " },
+      { t: "st",  v: "' PRODUCAO.PEDIDOS'" }, { t: "", v: "\n  || " },
+      { t: "st",  v: "' WITH DISTRIBUTION'" }, { t: "", v: "\n  || " },
+      { t: "st",  v: "' AND DETAILED INDEXES ALL'" }, { t: "", v: "\n);\n\n" },
+      { t: "cm",  v: "-- Verificar plano de execução" }, { t: "", v: "\n" },
+      { t: "kw",  v: "EXPLAIN" }, { t: "", v: " " },
+      { t: "kw",  v: "ALL" }, { t: "", v: "\n" },
+      { t: "kw",  v: "SET" }, { t: "", v: " " },
+      { t: "st",  v: "QUERYNO" }, { t: "", v: " = " },
+      { t: "nm",  v: "1" }, { t: "", v: "\n" },
+      { t: "kw",  v: "FOR" }, { t: "", v: "\n  " },
+      { t: "kw",  v: "SELECT" }, { t: "", v: " " },
+      { t: "nm",  v: "*" }, { t: "", v: " " },
+      { t: "kw",  v: "FROM" }, { t: "", v: " " },
+      { t: "tb",  v: "PRODUCAO.PEDIDOS" },
+    ],
+  ];
+
+  /* ── Renderizador ── */
+  function spanFor(token) {
+    const map = { kw: "kw", fn: "fn", st: "st", cm: "cm", nm: "nm", tb: "tb" };
+    if (!token.t || !map[token.t]) return document.createTextNode(token.v);
+    const s = document.createElement("span");
+    s.className = map[token.t];
+    s.textContent = token.v;
+    return s;
+  }
+
+  function typeAnimation(outputEl, snippets, delay) {
+    let snippetIdx = 0;
+    let tokenIdx   = 0;
+    let charIdx    = 0;
+
+    const cursor = document.createElement("span");
+    cursor.className = "ql-cursor";
+    outputEl.innerHTML = "";
+    outputEl.appendChild(cursor);
+
+    function tick() {
+      const snippet = snippets[snippetIdx];
+      if (tokenIdx >= snippet.length) {
+        // Reset: aguarda, limpa e avança
+        setTimeout(() => {
+          outputEl.innerHTML = "";
+          outputEl.appendChild(cursor);
+          snippetIdx = (snippetIdx + 1) % snippets.length;
+          tokenIdx   = 0;
+          charIdx    = 0;
+          setTimeout(tick, 300);
+        }, 2800);
+        return;
+      }
+
+      const token = snippet[tokenIdx];
+      const ch = token.v[charIdx];
+
+      // Insere um char por vez dentro do span do token
+      if (charIdx === 0) {
+        // Cria o elemento do token na primeira vez
+        const node = spanFor({ t: token.t, v: "" });
+        outputEl.insertBefore(node, cursor);
+        token._node = node;
+      }
+      if (token._node) {
+        token._node.textContent += ch;
+      } else {
+        // text node
+        if (!token._tnode) {
+          token._tnode = document.createTextNode("");
+          outputEl.insertBefore(token._tnode, cursor);
+        }
+        token._tnode.textContent += ch;
+      }
+
+      charIdx++;
+      if (charIdx >= token.v.length) {
+        // Limpa referências temporárias para próximo snippet
+        delete token._node;
+        delete token._tnode;
+        tokenIdx++;
+        charIdx = 0;
+      }
+
+      const speed = ch === "\n" ? 50 : (ch === " " ? 25 : Math.random() * 30 + 20);
+      setTimeout(tick, speed);
+    }
+
+    setTimeout(tick, delay);
+  }
+
+  /* ── Inicia as duas animações com offset ── */
+  const sqlOut = document.getElementById("ql-sql-output");
+  const db2Out = document.getElementById("ql-db2-output");
+
+  if (sqlOut) typeAnimation(sqlOut, sqlSnippets, 600);
+  if (db2Out) typeAnimation(db2Out, db2Snippets, 1800);
+})();
+</script>
+
+
       <main class="md-main" data-md-component="main">
         <div class="md-main__inner md-grid">
           
@@ -340,7 +856,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="QueryLog" class="md-nav__button md-logo" aria-label="QueryLog" data-md-component="logo">
+    <a href="." title="QueryLog" class="md-nav__button md-logo" aria-label="QueryLog" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -367,10 +883,17 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="." class="md-nav__link md-nav__link--active">
         
   
   
@@ -386,6 +909,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -455,7 +979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scripts/index-scripts/" class="md-nav__link">
+      <a href="scripts/index-scripts/" class="md-nav__link">
         
   
   
@@ -539,14 +1063,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../scripts/boas-praticas-sql/" class="md-nav__link">
+      <a href="scripts/boas-praticas-sql/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Boas Práticas Desenvolvimento SQL
+    Boas praticas desenvolvimento SQL
   
 
     
@@ -579,10 +1103,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -592,22 +1114,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
   
   
@@ -625,7 +1144,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -640,17 +1159,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="relatorios/index-relatorios/" class="md-nav__link">
         
   
   
@@ -666,7 +1178,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -742,7 +1253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../banco-de-dados/index-banco-de-dados/" class="md-nav__link">
+      <a href="banco-de-dados/index-banco-de-dados/" class="md-nav__link">
         
   
   
@@ -804,46 +1315,6 @@
   
 
 
-  <nav class="md-path" aria-label="Navigation" >
-    <ol class="md-path__list">
-      
-        
-  
-  
-    <li class="md-path__item">
-      <a href="../.." class="md-path__link">
-        
-  <span class="md-ellipsis">
-    Home
-  </span>
-
-      </a>
-    </li>
-  
-
-      
-      
-        
-  
-  
-    
-    
-      <li class="md-path__item">
-        <a href="./" class="md-path__link">
-          
-  <span class="md-ellipsis">
-    Relatórios
-  </span>
-
-        </a>
-      </li>
-    
-  
-
-      
-    </ol>
-  </nav>
-
               
               <article class="md-content__inner md-typeset">
                 
@@ -851,7 +1322,7 @@
 
 
   
-    <a href="https://github.com/GabrielAleDore/QueryLog-mkdocs/edit/main/docs/relatorios/index-relatorios.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/GabrielAleDore/QueryLog-mkdocs/edit/main/docs/index.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
     </a>
@@ -859,7 +1330,7 @@
   
 
 
-  <h1>Index relatorios</h1>
+  <h1>Home</h1>
 
 
 
@@ -884,7 +1355,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 23, 2026 14:15:36 UTC">February 23, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 23, 2026 20:21:19 UTC">February 23, 2026</span>
   </span>
 
     
@@ -953,31 +1424,15 @@
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
-          
-          <a href="../../scripts/boas-praticas-sql/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Boas Práticas Desenvolvimento SQL">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Boas Práticas Desenvolvimento SQL
-              </div>
-            </div>
-          </a>
-        
         
           
-          <a href="../../banco-de-dados/index-banco-de-dados/" class="md-footer__link md-footer__link--next" aria-label="Next: Index banco de dados">
+          <a href="scripts/index-scripts/" class="md-footer__link md-footer__link--next" aria-label="Next: Indeces dos aquivos de script">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Index banco de dados
+                Indeces dos aquivos de script
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1095,10 +1550,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.action.edit", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.instant", "navigation.instant.prefetch", "navigation.instant.progress", "navigation.instant.preview", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.action.edit", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

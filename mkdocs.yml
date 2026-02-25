@@ -1,17 +1,16 @@
 site_name: QueryLog
 site_url: https://querylog.org
 
-# Configuração do repositorio
+# Configuração do repositório
 repo_url: https://github.com/GabrielAleDore/QueryLog-mkdocs
 repo_name: QueryLog-mkdocs
 edit_uri: edit/main/docs
 
 theme:
   name: material
+  custom_dir: overrides       # Habilita templates customizados (home.html)
 
   icon:
-
-    # Icones da confguração do repositorio
     repo: fontawesome/brands/gitlab
     edit: material/pencil
     view: material/eye
@@ -25,23 +24,25 @@ theme:
     - navigation.instant.prefetch # Pré-busca instantânea
     - navigation.instant.progress # Indicador de progresso
     - navigation.instant.preview  # Pré-visualizações globais
-    - navigation.tracking         # Ancorá para navegação
+    - navigation.tracking         # Âncora para navegação
     - navigation.tabs             # Guias de navegação
-    - navigation.tabs.sticky      # Abras de navegação fixas
+    - navigation.tabs.sticky      # Abas de navegação fixas
     - navigation.sections         # Seções de navegação
-    - navigation.expand           # expansão de navegação
-    - navigation.path             # Caminho das pastas 
-    - navigation.indexes          # Páginas de indice
-#    - toc.integrate               # Navegação integrada
+    - navigation.path             # Caminho das pastas
+    - navigation.indexes          # Páginas de índice
     - navigation.top              # Voltar ao topo
+    - toc.follow                  # TOC acompanha o scroll
     - search.suggest              # Sugestões de pesquisa
     - search.highlight            # Destaca as pesquisas
-    - search.share                # Compatilhar pesquisas
+    - search.share                # Compartilhar pesquisas
     - header.autohide             # Oculta o cabeçalho automaticamente
-    - navigation.footer           # Botão proximo e anterior
+    - navigation.footer           # Botão próximo e anterior
     - content.action.edit         # Permite editar os arquivos
+    - content.code.copy           # Permite copiar o código
+    - content.code.annotate       # Criar comentários no código
+    - content.tabs.link           # Guias de conteúdos vinculados
 
-  palette: 
+  palette:
   # Automatic mode
   - media: "(prefers-color-scheme)"
     toggle:
@@ -50,7 +51,9 @@ theme:
 
   # Light mode
   - media: "(prefers-color-scheme: light)"
-    scheme: default 
+    scheme: default
+    primary: indigo
+    accent: blue
     toggle:
       icon: material/brightness-7
       name: Switch to dark mode
@@ -58,38 +61,71 @@ theme:
   # Dark mode
   - media: "(prefers-color-scheme: dark)"
     scheme: slate
+    primary: indigo
+    accent: blue
     toggle:
       icon: material/brightness-4
       name: Switch to system preference
 
-# Configuração de privacidade
+# Stylesheet customizado
+extra_css:
+  - stylesheets/extra.css
+
+# Configuração de privacidade / consentimento
 extra:
   consent:
-    title: Cookie consent
-    description: 
-      Usamos cookies para reconhecer suas visitas repetidas e preferências, bem como para medir a eficácia de nossa documentação e se os usuários encontram o que procuram. Com seu consentimento, você nos ajuda a melhorar nossa documentação.
+    title: Consentimento de Cookies
+    description: >-
+      Usamos cookies para reconhecer suas visitas repetidas e preferências, bem como
+      para medir a eficácia de nossa documentação. Com seu consentimento, você nos
+      ajuda a melhorar a experiência de todos.
     cookies:
-      analytics: Nome personalizado
-      custom: Custom cookie
+      analytics: Google Analytics
     actions:
       - accept
       - manage
       - reject
 
-   # Pré-visualizações instantâneas para lista de atributos   
-  
+  # Algolia DocSearch — preencha com as credenciais após solicitar acesso em docsearch.algolia.com
+  # analytics:
+  #   provider: algolia
+  #   property: ALGOLIA_APP_ID
+  #   api_key: ALGOLIA_SEARCH_ONLY_KEY
+  #   index_name: querylog
 
-# Extenções
+# Extensões Markdown
 markdown_extensions:
-  - attr_list   # Lista de atributos
-  - admonition  # Admoestação
-  - abbr        # Abreviações
-  - def_list    # Listas de definições
-  - footnotes   # Notas de rodapé
-  - md_in_html  # Permite personalizar com HTML
-  - tables      # Permite criar tabelas
+  - attr_list     # Lista de atributos
+  - admonition    # Caixas de aviso (note, tip, warning…)
+  - abbr          # Abreviações
+  - def_list      # Listas de definições
+  - footnotes     # Notas de rodapé
+  - md_in_html    # Permite personalizar com HTML
+  - tables        # Tabelas
 
-  # Pré-visualizações automáticas
+  # Emojis e ícones inline  :material-database:
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # Personalização do bloco de código
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+  # Guias de conteúdo / code tabs
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Listas de tarefas
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+  # Pré-visualizações automáticas (link hover)
   - material.extensions.preview:
       configurations:
        - targets:
@@ -100,29 +136,30 @@ markdown_extensions:
 plugins:
   - search
 
-  # Adicionar data nos documentos
+  # Categorização por tags  (#tag nas páginas)
+  - tags
+
+  # Responsável pelo versionamento (datas de criação/edição)
   - git-revision-date-localized:
       enable_creation_date: true
       enabled: true
       type: date
 
+  # Avatares de contribuidores
+  # O token é lido de variável de ambiente — NÃO coloque tokens em texto plano aqui!
   - git-committers:
       repository: GabrielAleDore/QueryLog-mkdocs
       branch: main
-      enabled: true
-  
-  - git-authors
+      token: !ENV MKDOCS_GIT_COMMITTERS_APIKEY
 
-# Estrutura de navegação 
+# Estrutura de navegação
 nav:
   - Home: index.md
-
-  # Arquitetura arquivos de script
-  - Scripts: scripts/index-scripts.md
-
-  # Arquitetura arquivos de relatórios
-  - Relatórios: relatorios/index-relatorios.md
-  
-  # Arquitetura arquivos de Banco de dados
-  - Banco de Dados: banco-de-dados/index-banco-de-dados.md
-
+  - Scripts:
+    - scripts/index-scripts.md
+    - Documentos:
+      - scripts/boas-praticas-sql.md
+  - Relatórios:
+    - relatorios/index-relatorios.md
+  - Banco de Dados:
+    - banco-de-dados/index-banco-de-dados.md
