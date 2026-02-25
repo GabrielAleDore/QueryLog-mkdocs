@@ -1,0 +1,85 @@
+/* ═══════════════════════════════════════════════
+   QueryLog — Extra CSS
+   Complementa o overrides/home.html com estilos
+   que se aplicam globalmente ao site.
+═══════════════════════════════════════════════ */
+
+/* ── Fonte JetBrains Mono via Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* ══════════════════════════════════
+   Scrollbar customizada (Chromium)
+══════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--md-primary-fg-color--light);
+  border-radius: 99px;
+}
+
+/* ══════════════════════════════════
+   Realce de código mais rico
+══════════════════════════════════ */
+.md-typeset .highlight pre {
+  border-radius: 10px;
+  border: 1px solid var(--md-code-bg-color);
+}
+
+/* ══════════════════════════════════
+   Admonitions — bordas coloridas
+══════════════════════════════════ */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 8px;
+  border-left-width: 4px;
+}
+
+/* ══════════════════════════════════
+   Tags — estilo badge
+══════════════════════════════════ */
+.md-tag {
+  border-radius: 6px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: .2rem .55rem;
+}
+
+/* ══════════════════════════════════
+   Tabelas — listradas alternadas
+══════════════════════════════════ */
+.md-typeset table:not([class]) tbody tr:nth-child(even) {
+  background: var(--md-code-bg-color);
+}
+.md-typeset table:not([class]) th {
+  font-size: .8rem;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════
+   Botão "Editar esta página"
+   — aparência mais clean
+══════════════════════════════════ */
+.md-content__button {
+  opacity: .55;
+  transition: opacity .2s;
+}
+.md-content__button:hover { opacity: 1; }
+
+/* ══════════════════════════════════
+   Footer — linha separadora suave
+══════════════════════════════════ */
+.md-footer { border-top: 1px solid var(--md-typeset-table-color); }
+
+/* ══════════════════════════════════
+   Animação de entrada suave
+   para páginas de conteúdo
+══════════════════════════════════ */
+.md-content__inner {
+  animation: ql-fade-in .35s ease both;
+}
+@keyframes ql-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
