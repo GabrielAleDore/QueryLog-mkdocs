@@ -2,26 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://querylog.org/</loc>
-         <lastmod>2026-02-25</lastmod>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
          <loc>https://querylog.org/teste-atributo/</loc>
-         <lastmod>2026-02-25</lastmod>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
          <loc>https://querylog.org/banco-de-dados/index-banco-de-dados/</loc>
-         <lastmod>2026-02-25</lastmod>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://querylog.org/banco-de-dados/utilitarios/conectar-banco-de-dados/</loc>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
          <loc>https://querylog.org/relatorios/index-relatorios/</loc>
-         <lastmod>2026-02-25</lastmod>
-    </url>
-    <url>
-         <loc>https://querylog.org/scripts/boas-praticas-sql/</loc>
-         <lastmod>2026-02-25</lastmod>
+         <lastmod>2026-07-17</lastmod>
     </url>
     <url>
          <loc>https://querylog.org/scripts/index-scripts/</loc>
-         <lastmod>2026-02-25</lastmod>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://querylog.org/scripts/comandosdb2/import-export/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://querylog.org/scripts/documentos/boas-praticas-sql/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://querylog.org/scripts/documentos/desativacao-controle-lote/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://querylog.org/scripts/documentos/priorizacao-tickets/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://querylog.org/scripts/documentos/reprocessamento-estoque/</loc>
+         <lastmod>2026-07-17</lastmod>
+    </url>
+    <url>
+         <loc>https://querylog.org/scripts/processos/contato-com-clientes/</loc>
+         <lastmod>2026-07-17</lastmod>
     </url>
 </urlset>
