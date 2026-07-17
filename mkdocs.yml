@@ -132,6 +132,15 @@ markdown_extensions:
           include:
             - index.md
 
+  # Diagramas
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - pymdownx.tabbed
+
 # Plugins
 plugins:
   - search
@@ -140,25 +149,32 @@ plugins:
   - tags
 
   # Responsável pelo versionamento (datas de criação/edição)
-  - git-revision-date-localized:
-      enable_creation_date: true
-      enabled: true
-      type: date
-
-  # Avatares de contribuidores
-  # O token é lido de variável de ambiente — NÃO coloque tokens em texto plano aqui!
-  - git-committers:
-      repository: GabrielAleDore/QueryLog-mkdocs
-      branch: main
-      token: !ENV MKDOCS_GIT_COMMITTERS_APIKEY
-
+#  - git-revision-date-localized:
+#      enable_creation_date: true
+#      enabled: true
+#      type: date
+#
+#  # Avatares de contribuidores
+#  # O token é lido de variável de ambiente — NÃO coloque tokens em texto plano aqui!
+#  - git-committers:
+#      repository: GabrielAleDore/QueryLog-mkdocs
+#      branch: main
+#      token: !ENV MKDOCS_GIT_COMMITTERS_APIKEY
+      
 # Estrutura de navegação
 nav:
   - Home: index.md
   - Scripts:
     - scripts/index-scripts.md
     - Documentos:
-      - scripts/boas-praticas-sql.md
+      - scripts/documentos/boas-praticas-sql.md
+      - scripts/documentos/reprocessamento-estoque.md
+      - scripts/documentos/desativacao-controle-lote.md
+      - scripts/documentos/priorizacao-tickets.md
+    - Processos:
+      - scripts/processos/contato-com-clientes.md
+    - Comandos DB2:
+      - scripts/comandosdb2/import-export.md
   - Relatórios:
     - relatorios/index-relatorios.md
   - Banco de Dados:
